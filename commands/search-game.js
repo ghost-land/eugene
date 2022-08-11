@@ -48,7 +48,7 @@ module.exports = {
               .setThumbnail(data[i].info.icon_url ? data[i].info.icon_url : "")
               .setDescription(
                 data[i].info.description
-                  ? data[i].info.description.substr(0, 246)
+                  ? data[i].info.description
                   : "No description"
               )
 			  .addFields({
