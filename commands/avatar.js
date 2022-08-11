@@ -12,10 +12,10 @@ module.exports = {
 		if(user){
 			embed.setTitle(user.username+'\'s avatar')
 			embed.setImage(user.displayAvatarURL({ dynamic: true }))
-			return interaction.reply({embeds: [embed]})
+			return interaction.reply({embeds: [embed] , ephemeral: true});
 		}
 		embed.setTitle('Your avatar')
 		embed.setImage(interaction.user.displayAvatarURL({size: 1024}))
-		return interaction.reply({embeds: [embed]});
+		return interaction.reply({embeds: [embed], ephemeral: true});
 	},
 };

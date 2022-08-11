@@ -6,6 +6,6 @@ module.exports = {
 		.setDMPermission(false)
 		.setDescription('Gives the WebSocket ping'),
 	async execute(interaction, client) {
-		return interaction.reply("🏓 " + client.ws.ping + "ms");
+		return interaction.reply({ content:"🏓 " + client.ws.ping + "ms", ephemeral: true });
 	},
 };
