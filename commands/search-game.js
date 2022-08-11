@@ -41,7 +41,7 @@ module.exports = {
       .then((response) => {
         const data = response.data.storeContent;
         for (let i = 0; i < data.length; i++) {
-          if (data[i].info.title.toLowerCase().includes(game)) {
+          if (data[i].info.title.toLowerCase().includes(game.toLowerCase())) {
             finded = true;
             const embed = new EmbedBuilder()
               .setTitle(data[i].info.title ? data[i].info.title : "")
