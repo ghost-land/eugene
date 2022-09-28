@@ -33,16 +33,16 @@ client.once("ready", () => {
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
+  const command = client.commands.get(interaction.commandName);
+
+  if (!command) return;
+
   require('./config.json').disabledCommands.forEach(function(commandName) {
     if (interaction.commandName == commandName){
       console.log(interaction.commandName+commandName)
       return interaction.reply({content: 'This command has been disabled !', ephemeral: true})
     }
   })
-
-  const command = client.commands.get(interaction.commandName);
-
-  if (!command) return;
 
   try {
     await command.execute(interaction, client);
