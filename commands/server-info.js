@@ -47,6 +47,6 @@ module.exports = {
     //     );
     //   return interaction.reply({ embeds: [embed], ephemeral: true });
     // });
-    return interaction.reply({content: 'This command has been disabled by turbo for technical issues'})
+    return interaction.reply({content: 'This command has been disabled by turbo for technical issues', ephemeral: true})
   },
 };
