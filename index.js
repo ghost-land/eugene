@@ -37,7 +37,7 @@ client.on("interactionCreate", async (interaction) => {
 
   if (!command) return;
 
-  require('./config.json').disabledCommands.forEach(function(commandName) {
+  await require('./config.json').disabledCommands.forEach(function(commandName) {
     if (interaction.commandName == commandName){
       console.log(interaction.commandName+commandName)
       return interaction.reply({content: 'This command has been disabled !', ephemeral: true})
