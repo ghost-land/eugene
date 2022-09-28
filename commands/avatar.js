@@ -11,11 +11,11 @@ module.exports = {
 		const embed = new EmbedBuilder()
 		if(user){
 			embed.setTitle(user.username+'\'s avatar')
-			embed.setImage(user.displayAvatarURL({ dynamic: true }))
+			embed.setImage(user.displayAvatarURL({dynamic: true, size: 1024}))
 			return interaction.reply({embeds: [embed] , ephemeral: true});
 		}
 		embed.setTitle('Your avatar')
-		embed.setImage(interaction.user.displayAvatarURL({size: 1024}))
+		embed.setImage(interaction.user.displayAvatarURL({dynamic: true, size: 1024}))
 		return interaction.reply({embeds: [embed], ephemeral: true});
 	},
 };
