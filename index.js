@@ -4,13 +4,12 @@ const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Libs and utils
-require('dotenv').config();
+require("dotenv").config();
 client.path = require("node:path");
 client.fs = require("fs");
 client.os = require("os");
 client.cpuStat = require("cpu-stat");
 client.axios = require("axios");
-
 
 // Commands loader
 client.commands = new Collection();
@@ -36,15 +35,17 @@ client.on("interactionCreate", async (interaction) => {
   const command = client.commands.get(interaction.commandName);
 
   if (!command) return;
-
-  await require('./config.json').disabledCommands.forEach(function(commandName) {
-    if (interaction.commandName == commandName){
-      console.log(interaction.commandName+commandName)
-      return interaction.reply({content: 'This command has been disabled !', ephemeral: true})
-    }
-  })
-
+  
+  
   try {
+    require("./config.json").disabledCommands.forEach((commandName) => {
+      if (interaction.commandName == commandName) {
+        return interaction.reply({
+          content: "This command has been disabled !",
+          ephemeral: true,
+        });
+      }
+    });
     await command.execute(interaction, client);
   } catch (error) {
     console.error(error);
