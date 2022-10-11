@@ -1,4 +1,5 @@
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const config = require('./config.json')
 
 // Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -38,7 +39,7 @@ client.on("interactionCreate", async (interaction) => {
   
   
   try {
-    require("./config.json").disabledCommands.forEach((commandName) => {
+    config.disabledCommands.forEach((commandName) => {
       if (interaction.commandName == commandName) {
         return interaction.reply({
           content: "This command has been disabled !",
