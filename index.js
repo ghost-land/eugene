@@ -1,10 +1,9 @@
-const { Client, Collection, GatewayIntentBits } = require("discord.js");
-const config = require("./config.json");
-
 // Discord client
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Libs and utils
+const config = require("./config.json");
 require("dotenv").config();
 client.path = require("node:path");
 client.fs = require("fs");
@@ -38,24 +37,24 @@ client.on("interactionCreate", async (interaction) => {
   if (!command) return;
 
   try {
-    let t = true
+    interaction.deferReply({ content: "loading...", ephemeral: true });
+    let t = true;
     config.disabledCommands.forEach((commandName) => {
       if (interaction.commandName == commandName) {
-        t = false
+        t = false;
       }
     });
-    if (t===true){
+    if (t === true) {
       await command.execute(interaction, client);
-    }
-    else {
-        return interaction.reply({
-          content: "This command has been disabled !",
-          ephemeral: true,
-        });
+    } else {
+      return interaction.editReply({
+        content: "This command has been disabled !",
+        ephemeral: true,
+      });
     }
   } catch (error) {
     console.error(error);
-    await interaction.reply({
+    await interaction.editReply({
       content: `**ERROR IN THE MATRIX :**\n${error}`,
       ephemeral: false,
     });

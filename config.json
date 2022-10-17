@@ -1,5 +1,5 @@
 {
-	"clientId": "1006890972283678770",
-	"guildId": "633965704424718336",
-	"disabledCommands": ["search-game"]
+  "clientId": "1006890972283678770",
+  "guildId": "633965704424718336",
+  "disabledCommands": []
 }

@@ -31,13 +31,13 @@ module.exports = {
     member
       .timeout(time * 60000, reason)
       .then(() => {
-        return interaction.reply({
+        return interaction.editReply({
           content: `<@${member.user.id}> has been timeout ! :wave:`,
           ephemeral: false,
         });
       })
       .catch((err) => {
-        return interaction.reply({
+        return interaction.editReply({
           content: `**ERROR IN THE MATRIX :**\n\n${err}`,
           ephemeral: false,
         });

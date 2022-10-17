@@ -7,20 +7,26 @@ module.exports = {
     .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
     .setDescription("Kick bad boys from server")
     .addUserOption((option) =>
-      option.setName("target").setDescription("Member to kick").setRequired(true)
+      option
+        .setName("target")
+        .setDescription("Member to kick")
+        .setRequired(true)
     ),
   async execute(interaction) {
     const member = interaction.options.getMember("target");
     member
       .kick()
       .then(() => {
-        return interaction.reply({
+        return interaction.editReply({
           content: `<@${member.user.id}> has been kicked !`,
           ephemeral: false,
         });
       })
       .catch((err) => {
-        return interaction.reply({ content: `**ERROR IN THE MATRIX :**\n\n${err}`, ephemeral: false });
+        return interaction.editReply({
+          content: `**ERROR IN THE MATRIX :**\n\n${err}`,
+          ephemeral: false,
+        });
       });
   },
 };

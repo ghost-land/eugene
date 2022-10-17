@@ -19,7 +19,7 @@ module.exports = {
           {
             name: "CPU global usage",
             value: `${percent.toFixed(2)}%`,
-			inline: true
+            inline: true,
           },
           {
             name: "CPU name",
@@ -29,23 +29,27 @@ module.exports = {
           {
             name: "RAM global usage",
             value:
-              ((Math.round(
+              Math.round(
                 (client.os.totalmem() - client.os.freemem()) / 1024 / 1024 / 100
               ) /
-                10) +
-              "GB" + "/"+ (Math.round(
-                (client.os.totalmem()) / 1024 / 1024 / 100
-              ) /
-                10) +  "GB" + " ("
-			  + (100 - Math.round(client.os.freemem() / client.os.totalmem() * 100)) + "%)")
-			  ,
+                10 +
+              "GB" +
+              "/" +
+              Math.round(client.os.totalmem() / 1024 / 1024 / 100) / 10 +
+              "GB" +
+              " (" +
+              (100 -
+                Math.round(
+                  (client.os.freemem() / client.os.totalmem()) * 100
+                )) +
+              "%)",
           },
-		  {
-			name: "OS version",
-			value: `${client.os.platform} ${client.os.release()}`,
-		  }
+          {
+            name: "OS version",
+            value: `${client.os.platform} ${client.os.release()}`,
+          }
         );
-      return interaction.reply({ embeds: [embed], ephemeral: true });
+      return interaction.editReply({ embeds: [embed], ephemeral: true });
     });
   },
 };
