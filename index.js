@@ -37,7 +37,7 @@ client.on("interactionCreate", async (interaction) => {
   if (!command) return;
 
   try {
-    interaction.deferReply({ content: "loading...", ephemeral: true });
+    await interaction.deferReply({ content: "loading...", ephemeral: true });
     let t = true;
     config.disabledCommands.forEach((commandName) => {
       if (interaction.commandName == commandName) {
