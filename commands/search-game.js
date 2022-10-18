@@ -91,6 +91,11 @@ module.exports = {
             )
             .setFooter({ text: "Availbale on ghosteshop.com" });
           return interaction.editReply({ embeds: [embed], ephemeral: true });
+        } else {
+          return interaction.editReply({
+            content: "Unknown game id !",
+            ephemeral: true,
+          });
         }
       });
     } else {
