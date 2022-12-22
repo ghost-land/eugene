@@ -128,21 +128,24 @@ module.exports = {
               .addFields(
                 {
                   name: "Author",
-                  value: data[gameid[0]].info.author
-                    ? data[gameid[0]].info.author
-                    : "Unknown",
+                  value:
+                    data[gameid[0]].info.author.toString().length >= 1
+                      ? data[gameid[0]].info.author.toString()
+                      : "Unknown",
                 },
                 {
                   name: "Console",
-                  value: data[gameid[0]].info.console
-                    ? data[gameid[0]].info.console
-                    : "Unknown",
+                  value:
+                    data[gameid[0]].info.console.toString().length >= 1
+                      ? data[gameid[0]].info.console.toString()
+                      : "Unknown",
                 },
                 {
                   name: "Category",
-                  value: data[gameid[0]].info.category
-                    ? data[gameid[0]].info.category
-                    : "Unknown",
+                  value:
+                    data[gameid[0]].info.category.toString().length >= 1
+                      ? data[gameid[0]].info.category.toString()
+                      : "Unknown",
                 }
               )
               .setFooter({ text: "Availbale on ghosteshop.com" });
