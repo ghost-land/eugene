@@ -130,7 +130,7 @@ module.exports = {
                   name: "Author",
                   value: data[gameid[0]].info.author
                     ? data[gameid[0]].info.author
-                    : "",
+                    : "Unknown",
                 },
                 {
                   name: "Console",
