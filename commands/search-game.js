@@ -127,6 +127,10 @@ module.exports = {
               )
               .addFields(
                 {
+                  name: "Game ID",
+                  value: gameid[0].toString(),
+                },
+                {
                   name: "Author",
                   value:
                     data[gameid[0]].info.author.toString().length >= 1
